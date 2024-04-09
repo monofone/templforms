@@ -1,0 +1,23 @@
+<input
+ aria-invalid=\"
+\"
+ type=\"checkbox\"
+ checked
+ value=\"true\"
+ type=\"radio\"
+ selected
+ type=\"text\" value=\"
+\"
+ type=\"number\" value=\"
+\"
+ role=\"switch\"
+ aria-describedby=\"
+\"
+ aria-label=\"
+\"
+ id=\"
+\" name=\"
+\" placeholder=\"
+\"
+ required
+>

@@ -1,0 +1,28 @@
+package templforms
+
+type SelectOptions struct {
+    GenericOptions
+    Multiple bool
+    Size int
+}
+
+templ RawSelect(name string, selectOptions *SelectOptions) {
+    <select 
+        name={name}
+        id={idAttribute(selectOptions.ID, name)}
+        if selectOptions.Size > 1 {
+            size={numberAttribute(selectOptions.Size)}
+        }
+        multiple?={selectOptions.Multiple}
+        required?={selectOptions.Required}
+        disabled?={selectOptions.Disabled}
+    >
+        { children... }
+    </select>
+
+}
+
+templ RawOption(option Option) {
+    <option value={option.Value} selected?={option.Selected}>{option.Label}</option>
+}
+

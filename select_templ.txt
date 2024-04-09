@@ -1,0 +1,15 @@
+<select name=\"
+\" id=\"
+\"
+ size=\"
+\"
+ multiple
+ required
+ disabled
+>
+</select>
+<option value=\"
+\"
+ selected
+>
+</option>

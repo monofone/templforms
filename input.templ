@@ -1,0 +1,48 @@
+package templforms
+
+type InputOptions struct {
+    GenericOptions
+    Placeholder string
+    FirstLoad   bool
+    FieldError  error
+}
+
+templ RawInput(name, inputType string, fieldValue interface{}, options *InputOptions) {
+    <input 
+    if !options.FirstLoad {
+       aria-invalid={isInvalidValue(options.FieldError, options.FirstLoad)}
+    }
+
+    if inputType == "checkbox" || inputType == "switch" {
+        type="checkbox"
+        checked?={fieldValue.(bool)}
+        value="true"
+    }
+    if inputType == "radio" {
+        type="radio"
+        selected?={fieldValue.(bool)}
+    }
+    if inputType == "text" {
+        type="text"
+        value={fieldValue.(string)}
+    }
+    if inputType == "number" {
+        type="number"
+        value={fieldValue.(string)}
+    }
+
+
+    if inputType == "switch" {
+        role="switch"
+    }
+    
+    if options.FieldError != nil {
+        aria-describedby={name + "-error"}
+    }
+
+    if options.Placeholder != "" {
+        aria-label={options.Placeholder}
+    }
+
+     id={idAttribute(options.ID, name)} name={name} placeholder={options.Placeholder} required?={options.Required} />
+}
