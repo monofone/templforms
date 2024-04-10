@@ -26,3 +26,13 @@ templ RawOption(option Option) {
     <option value={option.Value} selected?={option.Selected}>{option.Label}</option>
 }
 
+templ RawOptions(options []Option) {
+    for _, option := range options {
+        @RawOption(option)
+    }
+}
+
+templ RawOptionGroup(option OptionGroup) {
+    <optgroup label={option.Label} disabled?={option.Disabled}>{ children... }</optgroup>
+}
+

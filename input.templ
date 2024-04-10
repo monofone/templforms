@@ -43,6 +43,8 @@ templ RawInput(name, inputType string, fieldValue interface{}, options *InputOpt
     if options.Placeholder != "" {
         aria-label={options.Placeholder}
     }
+    
+    { options.Attr... }
 
-     id={idAttribute(options.ID, name)} name={name} placeholder={options.Placeholder} required?={options.Required} />
+    id={idAttribute(options.ID, name)} name={name} placeholder={options.Placeholder} required?={options.Required} />
 }

@@ -1,0 +1,11 @@
+package test
+
+import (
+    "github.com/monofone/templforms"
+)
+
+templ optionGroupTest(options []templforms.Option) {
+    @templforms.RawOptionGroup(templforms.OptionGroup{Label: "some-label"}){
+        @templforms.RawOptions(options)
+    }
+}

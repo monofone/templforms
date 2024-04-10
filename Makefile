@@ -8,10 +8,10 @@ $(TEMPL):
 	test -f $(TEMPL) || GOBIN=$(LOCALBIN) go install github.com/a-h/templ/cmd/templ@latest
 
 templ-generate: $(TEMPL)
-	$(TEMPL) generate -watch -path ./ &
+	$(TEMPL) generate -path ./ &
 
 templ-watch: $(TEMPL)
-	$(TEMPL) generate -path ./ &
+	$(TEMPL) generate -watch -path ./ &
 
 tests: templ-generate
 	go test ./...
