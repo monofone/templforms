@@ -23,16 +23,16 @@ func Test_RawInput(t *testing.T) {
 		args args
 	}{
 		{
-			name: "raw input",
+			name: "raw text input",
 			args: args{
 				option:    &templforms.InputOptions{},
 				name:      "test-input",
-				inputType: "test",
+				inputType: "text",
 				value:     "some-test",
 			},
 		},
 		{
-			name: "raw input",
+			name: "raw number input",
 			args: args{
 				option:    &templforms.InputOptions{},
 				name:      "test-input",
@@ -54,12 +54,14 @@ func Test_RawInput(t *testing.T) {
 			}
 
 			inputNode := doc.Find(`input`)
-
+			assert.Equal(t, 1, inputNode.Length())
 			// Expect the component to be present.
-			assert.Equal(t, 1, inputNode.Length(), "expected input tag to be rendered, but it wasn't")
+			assert.True(t, inputNode.Is("input"), "expected input tag to be rendered, but it wasn't")
 
 			assertStringAttribute(t, "name", inputNode, tt.args.name)
-			v, _ := inputNode.Attr("value")
+			// get value attribute from input field with goquery
+			v, valueAttrExists := inputNode.Attr("value")
+			assert.True(t, valueAttrExists, "value attribute is not present")
 			assert.Equal(t, tt.args.value.(string), v)
 		})
 	}
