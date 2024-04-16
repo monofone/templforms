@@ -1,0 +1,3 @@
+<html><head><title>Storybook</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/css/templ-daisy-ui.css\"></head><body><h2>Templ <i>Daisy UI</i> Storybook</h2>
+<hr class=\"p-4\">
+<footer class=\"footer footer-center p-4 bg-base-400 text-base-content\"><aside><p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p></aside></footer></body></html>

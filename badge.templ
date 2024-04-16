@@ -1,0 +1,20 @@
+package templforms
+
+import "strings"
+
+type BadgeOptions struct {
+	Outline bool
+}
+
+func badgeClasses(opts BadgeOptions) string {
+	builder := strings.Builder{}
+	builder.WriteString("badge ")
+
+	return builder.String()
+}
+
+templ Badge(opts BadgeOptions) {
+	<div
+ 		class={ badgeClasses(opts) }
+	>{ children... }</div>
+}

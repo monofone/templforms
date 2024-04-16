@@ -31,6 +31,7 @@ templ RawInput(name, inputType string, fieldValue interface{}, options *InputOpt
         value={fieldValue.(string)}
     }
 
+    { options.Attr... }
 
     if inputType == "switch" {
         role="switch"
@@ -44,7 +45,5 @@ templ RawInput(name, inputType string, fieldValue interface{}, options *InputOpt
         aria-label={options.Placeholder}
     }
     
-    { options.Attr... }
-
     id={idAttribute(options.ID, name)} name={name} placeholder={options.Placeholder} required?={options.Required} />
 }
