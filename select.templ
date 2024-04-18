@@ -23,7 +23,7 @@ templ RawSelect(name string, selectOptions *SelectOptions) {
 }
 
 templ RawOption(option Option) {
-    <option value={option.Value} selected?={option.Selected}>{option.Label}</option>
+    <option value={option.Value} selected?={option.Selected} disabled?={option.Disabled}>{option.Label}</option>
 }
 
 templ RawOptions(options []Option) {

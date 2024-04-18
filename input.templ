@@ -22,15 +22,10 @@ templ RawInput(name, inputType string, fieldValue interface{}, options *InputOpt
         type="radio"
         selected?={fieldValue.(bool)}
     }
-    if inputType == "text" {
-        type="text"
+    if inputType != "checkbox" && inputType != "switch" && inputType != "radio" {
+        type={inputType}
         value={fieldValue.(string)}
     }
-    if inputType == "number" {
-        type="number"
-        value={fieldValue.(string)}
-    }
-
 
     if inputType == "switch" {
         role="switch"

@@ -40,6 +40,16 @@ func Test_RawOption(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "option, disabled",
+			args: args{
+				option: templforms.Option{
+					Value:    "some-value",
+					Label:    "some-label",
+					Disabled: true,
+				},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -55,12 +65,12 @@ func Test_RawOption(t *testing.T) {
 			// Expect the component to be present.
 			assert.Equal(t, 1, doc.Find(`option`).Length(), "expected option tag to be rendered")
 
-			valueAttr, valueAttrExists := doc.Find("option").Attr("value")
-			assert.True(t, valueAttrExists)
-			assert.Equal(t, tt.args.option.Value, valueAttr)
+			optionNode := doc.Find(`option`)
+			assertStringAttribute(t, "value", optionNode, tt.args.option.Value)
 
-			_, selectedAttrExists := doc.Find("option").Attr("selected")
-			assert.Equal(t, tt.args.option.Selected, selectedAttrExists)
+			assertBoolAttribute(t, "selected", optionNode, tt.args.option.Selected)
+
+			assertBoolAttribute(t, "disabled", optionNode, tt.args.option.Disabled)
 		})
 	}
 }
@@ -105,7 +115,7 @@ func Test_RawOptionGroup(t *testing.T) {
 			}
 			// Expect the component to be present.
 			if doc.Find(`optgroup`).Length() == 0 {
-				t.Error("expected option tag to be rendered, but it wasn't")
+				t.Error("expected optgroup tag to be rendered, but it wasn't")
 			}
 
 			optgroupNode := doc.Find(`optgroup`)
@@ -122,15 +132,15 @@ func TestOptionsGroupIntegration(t *testing.T) {
 
 	go func() {
 		options := []templforms.Option{
-			templforms.Option{
+			{
 				Label: "Option 1",
 				Value: "option-1",
 			},
-			templforms.Option{
+			{
 				Label: "Option 2",
 				Value: "option-2",
 			},
-			templforms.Option{
+			{
 				Label:    "Option 3",
 				Value:    "option-3",
 				Selected: true,

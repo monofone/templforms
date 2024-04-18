@@ -14,6 +14,7 @@ type Option struct {
 	Value    string
 	Label    string
 	Selected bool
+	Disabled bool
 }
 
 type OptionGroup struct {
